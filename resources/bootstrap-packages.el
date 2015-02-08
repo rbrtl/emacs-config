@@ -19,12 +19,13 @@
 
 (defun install-package-if-missing (package)
   "Intall a package if it is not installed already."
-  (if (package-installed-p package)
-         nil
-    (if (y-or-n-p (format "Package '%s' is missing. Install it? " package))
-	(package-install
-	 (car (cdr (assoc (intern package) package-archive-contents))))
-      package)))
+  (let ((pkg (intern package)))
+	(if (package-installed-p pkg)
+	    nil
+	  (if (y-or-n-p (format "Package '%s' is missing. Install it? " package))
+	      (package-install
+	       (car (cdr (assoc pkg package-archive-contents))))
+	    package))))
 
 (mapc 'install-package-if-missing
       (load-installed-packages))
