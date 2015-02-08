@@ -18,5 +18,7 @@ Config files should be located in ./resources directory."
 	 (file-name-as-directory emacs-repository-path)
 	 (file-name-as-directory "resources") config-name ".el")))
 
+(load-config "common")
 (load-config "bootstrap-packages")
 (load-config "theme")
+(load-config "powerline")
