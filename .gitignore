@@ -4,5 +4,6 @@
 # Packaging
 .cask
 
-# Editor
+# Editor based temp files
 *~
+\#*#
