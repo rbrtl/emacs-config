@@ -27,6 +27,11 @@
 	       (car (cdr (assoc pkg package-archive-contents))))
 	    package))))
 
-(mapc 'install-package-if-missing
-      (load-installed-packages))
+(defun install-all-packages ()
+  "Install all package that is currently not installed."
+  (interactive)
+  (mapc 'install-package-if-missing
+	(load-installed-packages)))
+
+(install-all-packages)
 
