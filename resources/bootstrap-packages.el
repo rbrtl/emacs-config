@@ -4,7 +4,7 @@
 
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(setq package-enable-at-startup nil)
+;(setq package-enable-at-startup nil)
 (package-initialize t)
 (package-read-all-archive-contents)
 (package-refresh-contents)
