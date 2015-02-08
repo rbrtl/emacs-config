@@ -8,7 +8,7 @@
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char))
 
-(icomplete-mode t)
+(iswitchb-mode t)
 
 (defun load-config (config-name)
   "Load the requested config.
