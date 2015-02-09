@@ -22,3 +22,4 @@ Config files should be located in ./resources directory."
 (load-config "bootstrap-packages")
 (load-config "theme")
 (load-config "powerline")
+(load-config "bookmarks")
