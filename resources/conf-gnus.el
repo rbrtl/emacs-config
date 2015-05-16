@@ -28,19 +28,6 @@
       gnus-sum-thread-tree-single-leaf     "└──►"
       )
 
+(define-key gnus-summary-mode-map [(meta p)] '(lambda() (interactive) (scroll-other-window -1)))
+(define-key gnus-summary-mode-map [(meta n)] '(lambda() (interactive) (scroll-other-window 1)))
 
-;; ; line format strings
-;; (setq gnus-summary-line-format "%O%U%R%z%d %B%(%[%4L: %-22,22f%]%) %s\n")
-;; (setq gnus-summary-mode-line-format "Gnus: %p [%A / Sc:%4z] %Z")
-
-;; ; threading visual appearacne
-;; (setq gnus-summary-same-subject "")
-;; (setq gnus-sum-thread-tree-root "")
-;; (setq gnus-sum-thread-tree-single-indent "")
-;; (setq gnus-sum-thread-tree-leaf-with-other "+-> ")
-;; (setq gnus-sum-thread-tree-vertical "|")
-;; (setq gnus-sum-thread-tree-single-leaf "`-> ")
-
-;; (setq gnus-group-line-format   "%P%m%M%L%6N/%-5R| %*%-16G %D\n" ; %* Positioning Point or use : instead
-;;       gnus-summary-line-format "|%*%U%R%B%s%-66=%-20,20f|%4L |%D|\n"
-;;       gnus-topic-line-format   "%i%n %A (%G) %v\n")
