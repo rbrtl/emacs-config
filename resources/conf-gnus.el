@@ -3,6 +3,8 @@
 ; use the gmane server as the primary news source
 (setq gnus-select-method '(nntp "news.gmane.org"))
 
+(add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
+
 ; use the topic mode
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
