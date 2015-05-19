@@ -1,5 +1,7 @@
 ;; gnus related configs
 
+(require 'gnus)
+
 ; use the gmane server as the primary news source
 (setq gnus-select-method '(nntp "news.gmane.org"))
 

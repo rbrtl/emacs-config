@@ -15,3 +15,7 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
+;; Mail address on my personal machine
+(setq user-mail-address "olikas.g@gmail.com"
+      user-login-name "olikasg"
+      user-full-name "Gabor Olah")
