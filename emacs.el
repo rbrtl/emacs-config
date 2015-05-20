@@ -24,3 +24,4 @@ files should start with prefix `conf-'."
 (load-config "theme")
 (load-config "powerline")
 (load-config "bm")
+(load-config "irfc")
