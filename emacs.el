@@ -27,3 +27,4 @@ files should start with prefix `conf-'."
 (load-config "irfc")
 (load-config "jekyll")
 (load-config "gnus")
+(load-config "svn")
