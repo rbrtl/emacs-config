@@ -19,3 +19,5 @@
 (setq user-mail-address "olikas.g@gmail.com"
       user-login-name "olikasg"
       user-full-name "Gabor Olah")
+
+(setq desktop-save-mode t)
