@@ -29,3 +29,5 @@ files should start with prefix `conf-'."
 (load-config "gnus")
 (load-config "svn")
 (load-config "magit")
+(when (string= system-name "olikasg-esl.local")
+  (load-config "esl"))
