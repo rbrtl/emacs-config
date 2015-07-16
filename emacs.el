@@ -3,6 +3,8 @@
 ;; This file is a starting point to bootstrap an emacs config on any of
 ;; my computers.
 
+(add-to-list 'load-path "resources")
+
 (when (string-equal system-type "darwin")
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
@@ -31,3 +33,7 @@ files should start with prefix `conf-'."
 (load-config "magit")
 (when (string= system-name "olikasg-esl.local")
   (load-config "esl"))
+(load-config "fci")
+(load-config "flyspell")
+
+

@@ -34,3 +34,6 @@
 
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+
+;; Dired act as a file manager
+(setq dired-dwim-target t)
