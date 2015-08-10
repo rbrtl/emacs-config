@@ -37,3 +37,5 @@
 
 ;; Dired act as a file manager
 (setq dired-dwim-target t)
+
+(show-paren-mode t)
