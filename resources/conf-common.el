@@ -39,3 +39,4 @@
 (setq dired-dwim-target t)
 
 (show-paren-mode t)
+(setq require-final-newline t)
