@@ -40,3 +40,11 @@
 
 (show-paren-mode t)
 (setq require-final-newline t)
+
+(global-hl-line-mode t)
+
+(setq-default fill-column 80)
+
+(require 'textile-mode)
+
+(require 'darkroom)

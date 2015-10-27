@@ -10,7 +10,8 @@
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char))
 
-(iswitchb-mode t)
+;(iswitchb-mode t)
+(ido-mode t)
 
 (defun load-config (config-name)
   "Load the requested config.
@@ -35,5 +36,5 @@ files should start with prefix `conf-'."
   (load-config "esl"))
 (load-config "fci")
 (load-config "flyspell")
-
+(load-config "ace")
 

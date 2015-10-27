@@ -30,3 +30,19 @@
 (setq erlang-man-root-dir (concat
                            (file-name-as-directory kerl-current-erlang-root)
                            "man"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ESL related templates
+
+;; (tempo-define-template
+;;  "esl-module-header"
+;;  '("%%%=============================================================================
+;; %%% @copyright (C) 1999-2012, Erlang Solutions Ltd
+;; %%% @author Gabor Olah <gabor.olah@erlang-solutions.com>
+;; %%% @doc 
+;; %%%
+;; %%% 
+;; %%%
+;; %%% @end
+;; %%%=============================================================================
+;; "))
