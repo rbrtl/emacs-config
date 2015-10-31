@@ -37,4 +37,5 @@ files should start with prefix `conf-'."
 (load-config "fci")
 (load-config "flyspell")
 (load-config "ace")
+(load-config "auto-complete")
 

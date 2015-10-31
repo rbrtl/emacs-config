@@ -39,6 +39,7 @@
 (setq dired-dwim-target t)
 
 (show-paren-mode t)
+
 (setq require-final-newline t)
 
 (global-hl-line-mode t)
@@ -48,3 +49,8 @@
 (require 'textile-mode)
 
 (require 'darkroom)
+(global-hl-line-mode t)
+
+;(require 'auto-complete)
+;(global-auto-complete-mode t)
+;(ac-config-default)
