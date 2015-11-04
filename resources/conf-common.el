@@ -45,6 +45,14 @@
 
 (setq-default fill-column 80)
 
-(require 'textile-mode)
+(add-hook 'after-init-hook 'my-after-init-hook)
+(defun my-after-init-hook ()
+  ;(require 'edts-start)
+  (require 'textile-mode)
 
-(require 'darkroom)
+  (require 'darkroom)
+  
+  (require 'auto-complete)
+  (ac-config-default)
+)
+
