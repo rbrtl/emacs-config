@@ -1,4 +1,4 @@
-;; fill-column-mode
+;; fill-column-indicator
 
 (require 'fill-column-indicator)
 

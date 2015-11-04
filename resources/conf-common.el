@@ -4,9 +4,9 @@
 (scroll-bar-mode -1)
 
 ;; display time
-(setq display-time-day-and-date t
-      display-time-24hr-format t)
-(display-time)
+;; (setq display-time-day-and-date t
+;;      display-time-24hr-format t)
+;; (display-time)
 
 ;; ediff does not open a new frame
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -20,7 +20,7 @@
       user-login-name "olikasg"
       user-full-name "Gabor Olah")
 
-(setq desktop-save-mode t)
+;(setq desktop-save-mode t)
 
 ; Thanks to Niles (http://nileshk.com/2009/06/13/prompt-before-closing-emacs.html)
 (defun ask-before-closing ()
@@ -32,8 +32,7 @@
         (save-buffers-kill-emacs))
     (message "Canceled exit")))
 
-(when window-system
-  (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+(global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
 ;; Dired act as a file manager
 (setq dired-dwim-target t)
@@ -56,6 +55,4 @@
   (require 'auto-complete)
   (ac-config-default)
 )
-
-(global-hl-line-mode t)
 
