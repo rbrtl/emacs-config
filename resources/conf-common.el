@@ -39,6 +39,7 @@
 (setq dired-dwim-target t)
 
 (show-paren-mode t)
+
 (setq require-final-newline t)
 
 (global-hl-line-mode t)
@@ -55,4 +56,6 @@
   (require 'auto-complete)
   (ac-config-default)
 )
+
+(global-hl-line-mode t)
 
