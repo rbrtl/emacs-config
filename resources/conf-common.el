@@ -51,8 +51,16 @@
   (require 'textile-mode)
 
   (require 'darkroom)
-  
+
   (require 'auto-complete)
   (ac-config-default)
 )
+
+(require 'automargin)
+(automargin-mode t)
+
+(require 'undo-tree)
+
+(setq-default show-trailing-whitespace t)
+
 

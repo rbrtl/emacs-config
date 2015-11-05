@@ -27,7 +27,7 @@ files should start with prefix `conf-'."
 (load-config "theme")
 (load-config "powerline")
 (load-config "bm")
-(load-config "RFC")
+(load-config "irfc")
 (load-config "jekyll")
 ;(load-config "gnus")
 (load-config "svn")
