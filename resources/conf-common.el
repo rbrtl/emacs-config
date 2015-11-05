@@ -45,22 +45,38 @@
 
 (setq-default fill-column 80)
 
+(defun set-tailing-whitespace ()
+  (setq show-trailing-whitespace t)
+)
+
+(add-hook 'prog-mode-hook 'set-trailing-whitespace)
+(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
+
+
 (add-hook 'after-init-hook 'my-after-init-hook)
 (defun my-after-init-hook ()
-  ;(require 'edts-start)
+  (require 'edts-start)
   (require 'textile-mode)
 
   (require 'darkroom)
 
   (require 'auto-complete)
   (ac-config-default)
+
+  ;;(require 'automargin)
+  ;;(automargin-mode t)
+
+  (require 'undo-tree)
+
+  (require 'projectile)
+  (global-set-key (kbd "C-x C-f") 'projectile-find-file)
+  (global-set-key (kbd "C-x F") 'ido-find-file)
 )
 
-(require 'automargin)
-(automargin-mode t)
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
 
-(require 'undo-tree)
-
-(setq-default show-trailing-whitespace t)
-
+(add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'erlang-mode-hook 'whitespace-mode)
 

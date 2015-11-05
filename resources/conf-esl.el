@@ -18,6 +18,8 @@
   (s-trim-left (s-trim-right s)))
 
 
+;; Load the path from file and remove all whitespaces if there is any from the
+;; beginning and the tail of the string
 (setq kerl-current-erlang-root (s-trim
                                 (with-temp-buffer
                                   (insert-file-contents "~/.kerl/.activepath")
