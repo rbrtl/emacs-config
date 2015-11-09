@@ -33,6 +33,7 @@
                            (file-name-as-directory kerl-current-erlang-root)
                            "man"))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ESL related templates
 

@@ -7,3 +7,6 @@
 # Editor based temp files
 *~
 \#*#
+
+# ESL based
+conf-esl-*
