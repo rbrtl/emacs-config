@@ -69,8 +69,8 @@
   (require 'undo-tree)
 
   (require 'projectile)
-  (global-set-key (kbd "C-x C-f") 'projectile-find-file)
-  (global-set-key (kbd "C-x F") 'ido-find-file)
+  (global-set-key (kbd "C-x F") 'projectile-find-file)
+  ;;(global-set-key (kbd "C-x C-f") 'ido-find-file)
 )
 
 (require 'whitespace)
