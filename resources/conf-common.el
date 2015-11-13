@@ -46,9 +46,9 @@
 
 (setq-default fill-column 80)
 
-(require 'textile-mode)
+;;(require 'textile-mode)
 
-(require 'darkroom)
+;(require 'darkroom)
 (global-hl-line-mode t)
 
 ;(require 'auto-complete)

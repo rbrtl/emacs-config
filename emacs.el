@@ -22,8 +22,8 @@ files should start with prefix `conf-'."
 	 (file-name-as-directory emacs-repository-path)
 	 (file-name-as-directory "resources") "conf-" config-name ".el")))
 
-(load-config "common")
 (load-config "bootstrap-packages")
+(load-config "common")
 (load-config "theme")
 (load-config "powerline")
 (load-config "bm")
