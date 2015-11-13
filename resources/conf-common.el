@@ -16,7 +16,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Mail address on my personal machine
-(setq user-mail-address "olikas.g@gmail.com"
+(setq user-mail-address "gabor.olah@erlang-solutions.com"
       user-login-name "olikasg"
       user-full-name "Gabor Olah")
 
