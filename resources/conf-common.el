@@ -45,12 +45,12 @@
 
 (setq-default fill-column 80)
 
-;; (defun set-tailing-whitespace ()
-;;   (setq show-trailing-whitespace t)
-;; )
+(defun set-trailing-whitespace ()
+  (setq show-trailing-whitespace t)
+)
 
-;(add-hook 'prog-mode-hook 'set-trailing-whitespace)
-;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
+(add-hook 'prog-mode-hook 'set-trailing-whitespace)
+(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
 
 
 (add-hook 'after-init-hook 'my-after-init-hook)

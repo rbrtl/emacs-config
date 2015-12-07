@@ -36,6 +36,7 @@ files should start with prefix `conf-'."
 (load-config "gnus")
 (load-config "flyspell")
 (load-config "ace")
+(load-config "erlang")
 (load-config "auto-complete")
 (when (string= system-name "olikasg-esl.local")
   (load-config "esl")
