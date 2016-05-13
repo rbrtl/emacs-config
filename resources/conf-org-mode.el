@@ -28,3 +28,19 @@
  ((t (:background "#FFFFEA"))))
 (org-block-end-line
  ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF"))))
+
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+
+(setq wombat-org-file (concat org-directory "/wombat.org"))
+(setq 
+(setq org-capture-templates
+      '(("t" "Wombat simple todo" entry (file+headline wombat-org-file "Tasks")
+         "* TODO %?\n")
+        ("l" "Wombat linked todo" entry (file+headline wombat-org-file "Tasks")
+         "* TODO %?\n   #+BEGIN_SRC erlang\n   %i\n   #+END_SRC\n   %l")
+        ("i" "Wombat idea" entry (file+headline wombat-org-file "Idea")
+         "* %?\n  %i\n  %a")))
+
+(let ((a "valami"))
+  (message a))

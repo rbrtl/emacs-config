@@ -71,6 +71,21 @@
   (require 'projectile)
   (global-set-key (kbd "C-x F") 'projectile-find-file)
   ;;(global-set-key (kbd "C-x C-f") 'ido-find-file)
+;;;; ** beacon
+
+  (setq beacon-color "red"
+        beacon-lighter nil)
+  (setq beacon-dont-blink-major-modes nil)
+  (require 'beacon)
+  (beacon-mode 1)
+;;;; ** on-screen
+  (setq on-screen-highlight-method 'narrow-line
+        on-screen-inverse-flag t
+        on-screen-highlighting-to-background-delta 1
+        on-screen-delay 5)
+  (require 'on-screen)
+  (on-screen-global-mode 1)
+
 )
 
 (require 'whitespace)
@@ -79,4 +94,5 @@
 
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'erlang-mode-hook 'whitespace-mode)
+
 

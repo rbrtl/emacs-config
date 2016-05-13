@@ -41,4 +41,4 @@ files should start with prefix `conf-'."
 (when (string= system-name "olikasg-esl.local")
   (load-config "esl")
   (load-config "esl-internal"))
-
+(load-config "helm")

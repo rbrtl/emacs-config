@@ -2,11 +2,7 @@
 
 (require 'gnus)
 
-;; ; use the gmane server as the primary news source
-;; (setq gnus-select-method '(nntp "news.gmane.org"))
-
-;; (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
-
+; use the gmane server as the primary news source
 ;; ; use the topic mode
 ;; (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
@@ -35,20 +31,52 @@
 ;; (define-key gnus-summary-mode-map [(meta p)] '(lambda() (interactive) (scroll-other-window -1)))
 ;; (define-key gnus-summary-mode-map [(meta n)] '(lambda() (interactive) (scroll-other-window 1)))
 
-(setq gnus-select-method
-      '(nnimap "esl"
-	       (nnimap-address "imap.gmail.com")  ; it could also be imap.googlemail.com if that's your server.
-	       (nnimap-server-port "imaps")
-	       (nnimap-stream ssl)
-           (nnimap-authinfo-file (expand-file-name "~/.authinfo.gpg"))))
-;; (setq gnus-select-method nil)
+(setq gnus-select-method '(nnnil ""))
+
+(setq gnus-secondary-select-methods
+      '(
+        ;; (nnimap "olikasg"
+        ;;        (nnimap-server-port 993)
+        ;;        (nnimap-stream ssl)
+        ;;        (nnir-search-engine imap)
+        ;;        (nnimap-address "imap.gmail.com")
+        ;;        (nnimap-list-pattern ("olikasg-"))
+        ;;        (nnimap-authinfo-file (expand-file-name "~/.authinfo.gpg")))
+        ;; /usr/local/Cellar/dovecot/2.2.18/libexec/dovecot/imap -o mail_location=maildir:/Users/gaborolah/Mail/personal/
+        (nnimap "office"
+                (nnimap-address "localhost")
+                (nnimap-stream shell)
+                (nnimap-shell-program "/usr/local/Cellar/dovecot/2.2.18/libexec/dovecot/imap -o mail_location=maildir:/Users/gaborolah/Mail/ESL/:INBOX=/Users/gaborolah/Mail/ESL/\[Gmail\].Inbox:LAYOUT=fs"))
+        (nnimap "personal"
+                (nnimap-address "localhost")
+                (nnimap-stream shell)
+                (nnimap-shell-program "/usr/local/Cellar/dovecot/2.2.18/libexec/dovecot/imap -o mail_location=maildir:/Users/gaborolah/Mail/personal/:INBOX=/Users/gaborolah/Mail/personal/\[Gmail\].Inbox:LAYOUT=fs"))
+        ;; (nnmaildir "ESL"
+        ;;         (directory "~/Mail/ESL")
+        ;;         (directory-files nnheader-directory-files-safe) 
+        ;;         (get-new-mail nil))
+        ;; (nnmaildir "OLIKASG"
+        ;;         (directory "~/Mail/Personal")
+        ;;         (directory-files nnheader-directory-files-safe) 
+        ;;         (get-new-mail nil))
+        (nntp "gmane"
+              (nntp-address "news.gmane.org")
+              (nntp-port-number 119))
+        ))
+
+(define-key gnus-group-mode-map (kbd "vo")
+  '(lambda ()
+     (interactive)
+     (shell-command "offlineimap&" "*offlineimap*" nil)))
 
 (setq smtpmail-smtp-service 465
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 ;; Formatting the overal appearance
 ;; "%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n"
-(setq gnus-summary-line-format "%O%U%R%z %-20,20&user-date;% │ %-22,22f% │ %B %s\n")
+(setq gnus-summary-line-format
+      (concat "%O%U%R%z %-20,20&user-date;%"
+              " │ %-22,22f% │ %B %s\n"))
 (setq gnus-user-date-format-alist
       '(((gnus-seconds-today) . "Today, %H:%M")
         ((+ 86400 (gnus-seconds-today)) . "Yesterday, %H:%M")
@@ -69,12 +97,12 @@
 (setq gnus-sum-thread-tree-leaf-with-other  "├──❯ ")
 (setq gnus-sum-thread-tree-single-leaf      "╰──❯ ")
 
-(setq gnus-thread-sort-functions '(gnus-thread-sort-by-number 
-                                   gnus-thread-sort-by-most-recent-date 
-                                   gnus-thread-sort-by-total-score) 
-      gnus-subthread-sort-functions '(gnus-thread-sort-by-number 
-                                      gnus-thread-sort-by-date) 
-      gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date) 
+(setq gnus-thread-sort-functions '(gnus-thread-sort-by-number
+                                   gnus-thread-sort-by-most-recent-date
+                                   gnus-thread-sort-by-total-score)
+      gnus-subthread-sort-functions '(gnus-thread-sort-by-date
+                                      gnus-thread-sort-by-number)
+      gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date)
 
 ;; (setq gnus-sum-thread-tree-root "╭● ")
 ;; (Setq gnus-sum-thread-tree-single-indent "")

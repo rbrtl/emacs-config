@@ -8,4 +8,6 @@
   (call-interactively 'ace-select-window)
   (enlarge-window 200))
 
+(global-set-key (kbd "C-x o") 'ace-select-window)
+
 ;(global-set-key (kbd "M-o") 'olikasg-smart-select-window)
