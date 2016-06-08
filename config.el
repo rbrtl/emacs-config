@@ -92,6 +92,16 @@
   :config
   (global-undo-tree-mode))
 
+(use-package powerline
+  :ensure t
+  :pin melpa-stable
+  :config
+  (powerline-default-theme))
+
+
+
+
+
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
 
 
