@@ -86,6 +86,12 @@
          ("C-c l" . magit-log-all))
   )
 
+(use-package undo-tree
+  :ensure t
+  :pin gnu
+  :config
+  (global-undo-tree-mode))
+
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
 
 

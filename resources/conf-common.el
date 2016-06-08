@@ -16,8 +16,6 @@
   ;;(require 'automargin)
   ;;(automargin-mode t)
 
-  (require 'undo-tree)
-
   (require 'projectile)
   (global-set-key (kbd "C-x F") 'projectile-find-file)
   ;;(global-set-key (kbd "C-x C-f") 'ido-find-file)
