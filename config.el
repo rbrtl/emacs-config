@@ -115,7 +115,12 @@
   :config
   (powerline-default-theme))
 
-
+(use-package bm
+  :ensure t
+  :pin marmalade
+  :bind (("C-?" . bm-toggle)
+         ("C-<" . bm-previous)
+         ("C->" . bm-nexr)))
 
 
 
@@ -140,8 +145,6 @@
 ;; (load-config "bootstrap-packages")
 ;; (load-config "common")
 ;; (load-config "theme")
-;; (load-config "powerline")
-;; (load-config "bm")
 ;; (load-config "irfc")
 ;; (load-config "jekyll")
 ;; (load-config "svn")
