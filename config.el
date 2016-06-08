@@ -55,7 +55,20 @@
   (setq show-trailing-whitespace t)
 )
 
+(require 'package)
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(add-to-list 'package-archives
+;;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("elpa" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(setq package-enable-at-startup nil)
+(package-initialize t)
+;(package-read-all-archive-contents)
+;(package-refresh-contents)
 
 (add-to-list 'load-path (concat
 			 (file-name-as-directory emacs-repository-path)
