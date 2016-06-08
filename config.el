@@ -76,6 +76,9 @@
 
 (require 'use-package)
 
+(setq use-package-verbose t)
+;(setq use-package-debug t)
+
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -83,20 +86,35 @@
   (setq git-commit-summary-max-length 72)
   (setq git-commit-fill-column 72) ; Longer than 72 characters in a line looks ugly on GitHub
   :bind (("C-c s" . magit-status)
-         ("C-c l" . magit-log-all))
-  )
+         ("C-c l" . magit-log-all)))
+
+(use-package cl
+  :demand t)
+
+(use-package diminish
+  :ensure t)
 
 (use-package undo-tree
   :ensure t
+  :ensure diff
+  :ensure diminish
   :pin gnu
+  :load-path "~/.emacs.d/elpa/undo-tree-0.6.5"
+  :diminish undo-tree-mode
   :config
-  (global-undo-tree-mode))
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)))
 
 (use-package powerline
   :ensure t
+  :ensure cl
   :pin melpa-stable
+  :defer t
   :config
   (powerline-default-theme))
+
 
 
 
