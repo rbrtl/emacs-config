@@ -76,6 +76,15 @@
 
 (require 'use-package)
 
+(use-package magit
+  :ensure t
+  :pin melpa-stable
+  :init
+  (setq git-commit-summary-max-length 72)
+  (setq git-commit-fill-column 72) ; Longer than 72 characters in a line looks ugly on GitHub
+  :bind (("C-c s" . magit-status)
+         ("C-c l" . magit-log-all))
+  )
 
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
 
