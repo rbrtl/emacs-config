@@ -8,8 +8,10 @@
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char))
 
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(if window-system
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
 
 ;; display time
 ;; (setq display-time-day-and-date t
