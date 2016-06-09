@@ -120,14 +120,23 @@
 (use-package bm
   :ensure t
   :pin marmalade
-  :bind (("C-?" . bm-toggle)
-         ("C-<" . bm-previous)
-         ("C->" . bm-nexr)))
+  :bind (("<f6>" . bm-toggle)
+         ("<f7>" . bm-previous)
+         ("<f8>" . bm-nexr)))
 
 (use-package ace-window
   :ensure t
   :pin elpa
   :bind (("M-p" . ace-window)))
+
+(use-package zenburn-theme
+  :ensure t
+  :pin melpa-stable
+  :disabled t)
+
+(use-package hc-zenburn-theme
+  :ensure t
+  :pin melpa-stable)
 
 
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
