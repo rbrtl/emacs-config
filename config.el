@@ -122,7 +122,10 @@
          ("C-<" . bm-previous)
          ("C->" . bm-nexr)))
 
-
+(use-package ace-window
+  :ensure t
+  :pin elpa
+  :bind (("M-p" . ace-window)))
 
 
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
@@ -153,7 +156,6 @@
 ;; (load-config "bbdb")
 ;; (load-config "gnus")
 ;; (load-config "flyspell")
-;; (load-config "ace")
 ;; (load-config "erlang")
 ;; (load-config "auto-complete")
 ;; (when (string= system-name "olikasg-esl.local")
