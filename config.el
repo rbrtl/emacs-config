@@ -68,7 +68,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;(setq package-enable-at-startup nil)
-(package-initialize t)
+(package-initialize)
 ;(package-read-all-archive-contents)
 ;(package-refresh-contents)
 
@@ -131,12 +131,13 @@
 
 (use-package zenburn-theme
   :ensure t
-  :pin melpa-stable
-  :disabled t)
+  :pin melpa-stable)
 
 (use-package hc-zenburn-theme
   :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :defer t
+  :disabled t)
 
 
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
