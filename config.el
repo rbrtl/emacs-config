@@ -188,7 +188,31 @@
          ("C-x c SPC" . helm-all-mark-rings)))
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
-;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
+
+(use-package helm-ack
+  :ensure t
+  :pin melpa-stable)
+
+(use-package helm-git
+  :ensure t
+  :pin melpa
+  :disabled t)
+
+(use-package helm-git-grep
+  :ensure t
+  :pin melpa-stable
+  :disabled t)
+
+(use-package projectile
+  :ensure t
+  :pin melpa)
+
+(use-package helm-projectile
+  :ensure t
+  :pin melpa
+  :bind (("C-x p f" . helm-projectile-find-file)))
+
+;;;;
 
 
 ;; (add-to-list 'load-path "resources")
