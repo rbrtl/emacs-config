@@ -81,6 +81,12 @@
 (setq use-package-verbose t)
 ;(setq use-package-debug t)
 
+(use-package dash
+  :ensure t)
+
+(use-package popup
+  :ensure t)
+
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -139,6 +145,14 @@
   :defer t
   :disabled t)
 
+(use-package edts
+  :ensure t
+  :pin melpa
+  :disabled t)
+
+(use-package erlang
+  :ensure t
+  :pin melpa-stable)
 
 ;;;;(add-hook 'erlang-mode-hook 'set-trailing-whitespace)
 
