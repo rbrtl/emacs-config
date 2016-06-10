@@ -152,7 +152,9 @@
 
 (use-package erlang
   :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  (add-hook 'erlang-mode-hook 'set-trailing-whitespace))
 
 (use-package helm
   :ensure t
