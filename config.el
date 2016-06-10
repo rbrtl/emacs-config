@@ -189,9 +189,17 @@
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
 
-(use-package helm-ack
+(use-package helm-ack ;; deprcated
   :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :disabled t) 
+
+(use-package helm-ag
+  :ensure t
+  :pin melpa-stable
+  :config
+  (custom-set-variables
+   '(helm-ag-base-command "ack --nocolor --nogroup")))
 
 (use-package helm-git
   :ensure t
