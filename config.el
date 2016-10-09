@@ -220,6 +220,22 @@
   :pin melpa
   :bind (("C-x p f" . helm-projectile-find-file)))
 
+(use-package markdown-mode
+  :ensure t
+  :pin melpa-stable)
+
+(use-package writeroom-mode
+  :ensure t
+  :pin melpa-stable)
+
+(use-package dockerfile-mode
+  :ensure t
+  :pin melpa-stable)
+
+(use-package docker
+  :ensure t
+  :pin melpa-stable)
+
 ;;;;
 
 ;; find aspell and hunspell automatically
