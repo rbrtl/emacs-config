@@ -18,8 +18,6 @@
 ;;      display-time-24hr-format t)
 ;; (display-time)
 
-(ido-mode 1)
-
 ;; ediff does not open a new frame
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
@@ -257,36 +255,3 @@
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
 
 (global-set-key (kbd "C-;") 'ispell-word)
-
-
-;; (add-to-list 'load-path "resources")
-
-;; ;(iswitchb-mode t)
-;; (ido-mode t)
-
-;; (defun load-config (config-name)
-;;   "Load the requested config.
-
-;; Config files should be located in `./resources' directory. Config
-;; files should start with prefix `conf-'."
-;;   (load (concat
-;; 	 (file-name-as-directory emacs-repository-path)
-;; 	 (file-name-as-directory "resources") "conf-" config-name ".el")))
-
-;; (load-config "bootstrap-packages")
-;; (load-config "common")
-;; (load-config "theme")
-;; (load-config "irfc")
-;; (load-config "jekyll")
-;; (load-config "svn")
-;; (load-config "magit")
-;; ;(load-config "fci")
-;; (load-config "bbdb")
-;; (load-config "gnus")
-;; (load-config "flyspell")
-;; (load-config "erlang")
-;; (load-config "auto-complete")
-;; (when (string= system-name "olikasg-esl.local")
-;;   (load-config "esl")
-;;   (load-config "esl-internal"))
-;; (load-config "helm")
