@@ -133,15 +133,22 @@
   :pin elpa
   :bind (("M-p" . ace-window)))
 
-(use-package zenburn-theme
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :pin melpa-stable)
+
+(use-package monokai-theme
   :ensure t
   :pin melpa-stable)
 
-(use-package hc-zenburn-theme
+(use-package alchemist
   :ensure t
-  :pin melpa-stable
-  :defer t
-  :disabled t)
+  :pin melpa-stable)
+
+;; (use-package hc-zenburn-theme
+;;   :ensure t
+;;   :pin melpa-stable
+;;   :defer t)
 
 (use-package edts
   :ensure t
