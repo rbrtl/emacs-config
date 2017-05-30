@@ -13,6 +13,9 @@
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
 
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 5) ((control))))
+(setq mouse-wheel-progressive-speed nil)
+
 ;; display time
 ;; (setq display-time-day-and-date t
 ;;      display-time-24hr-format t)
@@ -52,8 +55,8 @@
 (setq-default fill-column 80)
 
 (defun set-trailing-whitespace ()
-  (setq show-trailing-whitespace t)
-)
+  (setq show-trailing-whitespace t))
+
 
 (require 'package)
 
@@ -71,8 +74,8 @@
 ;(package-refresh-contents)
 
 (add-to-list 'load-path (concat
-			 (file-name-as-directory emacs-repository-path)
-			 "use-package-2.1"))
+                         (file-name-as-directory emacs-repository-path)
+                         "use-package-2.1"))
 
 (require 'use-package)
 
@@ -262,18 +265,60 @@
    minibuffer-local-completion-map))
 ;;;;
 
+(use-package cider
+  :ensure t
+  :pin melpa-stable)
+
+(use-package paredit
+  :ensure t
+  :pin melpa-stable
+  :config
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+
+(use-package parinfer
+  :ensure t
+  :disabled t
+  :init
+  (progn
+    (setq parinfer-extensions
+          '(defaults       ; should be included.
+                                        ;pretty-parens  ; different paren styles for different modes.
+                                        ;evil           ; If you use Evil.
+                                        ;lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
+             paredit))        ; Introduce some paredit commands.
+                                        ;smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+                                        ;smart-yank   ; Yank behavior depend on mode.
+
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
+
+(use-package company
+  :ensure t
+  :pin melpa
+  :bind (("C-;" . company-complete))
+  :config
+  (global-company-mode))
+
+(use-package company-flx
+  :ensure t
+  :config
+  (company-flx-mode +1))
+
 ;; find aspell and hunspell automatically
 (cond
  ;; try hunspell at first
-  ;; if hunspell does NOT exist, use aspell
+ ;; if hunspell does NOT exist, use aspell
  ((executable-find "hunspell")
   (setq ispell-program-name "hunspell")
   (setq ispell-local-dictionary "en_US")
   (setq ispell-local-dictionary-alist
         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)
-          )))
+        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
  ((executable-find "aspell")
   (setq ispell-program-name "aspell")
