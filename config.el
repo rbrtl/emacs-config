@@ -129,7 +129,7 @@
   :pin marmalade
   :bind (("<f6>" . bm-toggle)
          ("<f7>" . bm-previous)
-         ("<f8>" . bm-nexr)))
+         ("<f8>" . bm-next)))
 
 (use-package ace-window
   :ensure t
