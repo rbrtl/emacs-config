@@ -6,7 +6,8 @@
 (when (string-equal system-type "darwin")
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char))
+  (global-set-key [kp-delete] 'delete-char)
+  (setq ring-bell-function 'ignore))
 
 (if window-system
     (progn
@@ -17,9 +18,8 @@
 (setq mouse-wheel-progressive-speed nil)
 
 ;; display time
-;; (setq display-time-day-and-date t
-;;      display-time-24hr-format t)
-;; (display-time)
+(setq display-time-day-and-date t
+     display-time-24hr-format t)
 
 ;; ediff does not open a new frame
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -29,28 +29,12 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Mail address on my personal machine
-(setq user-mail-address "gabor.olah@erlang-solutions.com"
-      user-login-name "olikasg"
-      user-full-name "Gabor Olah")
+(setq user-mail-address "robert.edwin.lee@icloud.com"
+      user-login-name "rob"
+      user-full-name "Robert Lee")
 
-; Thanks to Niles (http://nileshk.com/2009/06/13/prompt-before-closing-emacs.html)
-(defun ask-before-closing ()
-  "Ask whether or not to close, and then close if y was pressed"
-  (interactive)
-  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-      (if (< emacs-major-version 22)
-          (save-buffers-kill-terminal)
-        (save-buffers-kill-emacs))
-    (message "Canceled exit")))
-
-(global-set-key (kbd "C-x C-c") 'ask-before-closing)
-
-;; Dired act as a file manager
+;; Dired act as a file manager - copy to other dired frame by default
 (setq dired-dwim-target t)
-
-(setq require-final-newline t)
-
-(global-hl-line-mode t)
 
 (setq-default fill-column 80)
 
@@ -80,13 +64,13 @@
 (require 'use-package)
 
 (setq use-package-verbose t)
-;(setq use-package-debug t)
+;; (setq use-package-debug t)
 
-(use-package dash
-  :ensure t)
+;; (use-package dash
+;;   :ensure t)
 
-(use-package popup
-  :ensure t)
+;; (use-package popup
+;;   :ensure t)
 
 (use-package magit
   :ensure t
@@ -97,11 +81,11 @@
   :bind (("C-c s" . magit-status)
          ("C-c l" . magit-log-all)))
 
-(use-package cl
-  :demand t)
+;; (use-package cl
+;;   :demand t)
 
-(use-package diminish
-  :ensure t)
+;; (use-package diminish
+;;   :ensure t)
 
 (use-package undo-tree
   :ensure t
@@ -131,38 +115,17 @@
          ("<f7>" . bm-previous)
          ("<f8>" . bm-next)))
 
-(use-package ace-window
-  :ensure t
-  :pin elpa
-  :bind (("M-p" . ace-window)))
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :pin melpa-stable)
-
-(use-package monokai-theme
-  :ensure t
-  :pin melpa-stable)
-
-(use-package alchemist
-  :ensure t
-  :pin melpa-stable)
-
-;; (use-package hc-zenburn-theme
-;;   :ensure t
-;;   :pin melpa-stable
-;;   :defer t)
-
-(use-package edts
-  :ensure t
-  :pin melpa
-  :disabled t)
-
-(use-package erlang
+(use-package hc-zenburn-theme
   :ensure t
   :pin melpa-stable
+  :init
+  (load-theme 'hc-zenburn t))
+
+(use-package which-key
+  :ensure t
+  :pin gnu
   :config
-  (add-hook 'erlang-mode-hook 'set-trailing-whitespace))
+  (which-key-mode))
 
 (use-package helm
   :ensure t
@@ -194,13 +157,8 @@
          ("C-x c Y" . helm-yas-create-snippet-on-region)
          ("C-x c b" . my/helm-do-grep-book-notes)
          ("C-x c SPC" . helm-all-mark-rings)))
+
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
-
-
-(use-package helm-ack ;; deprcated
-  :ensure t
-  :pin melpa-stable
-  :disabled t) 
 
 (use-package helm-ag
   :ensure t
@@ -208,16 +166,6 @@
   :config
   (custom-set-variables
    '(helm-ag-base-command "ack --nocolor --nogroup")))
-
-(use-package helm-git
-  :ensure t
-  :pin melpa
-  :disabled t)
-
-(use-package helm-git-grep
-  :ensure t
-  :pin melpa-stable
-  :disabled t)
 
 (use-package projectile
   :ensure t
@@ -244,58 +192,6 @@
   :ensure t
   :pin melpa-stable)
 
-(use-package ensime
-  :ensure t
-  :pin melpa-stable
-  :config
-  (setq ensime-startup-snapshot-notification nil))
-
-(use-package scala-mode
-  :interpreter
-  ("scala" . scala-mode))
-
-(use-package sbt-mode
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map))
-;;;;
-
-(use-package cider
-  :ensure t
-  :pin melpa-stable)
-
-(use-package paredit
-  :ensure t
-  :pin melpa-stable
-  :config
-  (add-hook 'clojure-mode-hook #'enable-paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
-
-(use-package parinfer
-  :ensure t
-  :disabled t
-  :init
-  (progn
-    (setq parinfer-extensions
-          '(defaults       ; should be included.
-                                        ;pretty-parens  ; different paren styles for different modes.
-                                        ;evil           ; If you use Evil.
-                                        ;lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
-             paredit))        ; Introduce some paredit commands.
-                                        ;smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-                                        ;smart-yank   ; Yank behavior depend on mode.
-
-    (add-hook 'clojure-mode-hook #'parinfer-mode)
-    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'scheme-mode-hook #'parinfer-mode)
-    (add-hook 'lisp-mode-hook #'parinfer-mode)))
-
 (use-package company
   :ensure t
   :pin melpa
@@ -308,21 +204,25 @@
   :config
   (company-flx-mode +1))
 
-;; find aspell and hunspell automatically
-(cond
- ;; try hunspell at first
- ;; if hunspell does NOT exist, use aspell
- ((executable-find "hunspell")
-  (setq ispell-program-name "hunspell")
-  (setq ispell-local-dictionary "en_US")
-  (setq ispell-local-dictionary-alist
-        ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-        ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
- ((executable-find "aspell")
-  (setq ispell-program-name "aspell")
-  ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
-  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
+;; TODO: ::CHALLENGE:: Find a way to integrate macOS spelling
 
-(global-set-key (kbd "C-;") 'ispell-word)
+;; ;; find aspell and hunspell automatically
+;; (cond
+;;  ;; try hunspell at first
+;;  ;; if hunspell does NOT exist, use aspell
+;;  ((executable-find "hunspell")
+;;   (setq ispell-program-name "hunspell")
+;;   (setq ispell-local-dictionary "en_US")
+;;   (setq ispell-local-dictionary-alist
+;;         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+;;         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+;;         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
+
+;;  ((executable-find "aspell")
+;;   (setq ispell-program-name "aspell")
+;;   ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
+;;   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
+
+;; (global-set-key (kbd "C-;") 'ispell-word)
+

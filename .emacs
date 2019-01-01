@@ -1,4 +1,4 @@
-(set 'emacs-repository-path "/Users/olahgabor/Documents/git/emacs-config")
+(set 'emacs-repository-path "/Users/rob/Documents/Development/Elisp/emacs-config")
 (load (concat
        (file-name-as-directory emacs-repository-path)
        "config.el"))
