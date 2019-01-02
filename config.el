@@ -195,5 +195,15 @@
   :config
   (company-flx-mode +1))
 
+(use-package go-mode
+  :ensure t
+  :pin melpa)
 
+(use-package go-autocomplete
+  :ensure t
+  :pin melpa)
 
+(use-package term
+  :bind (:map term-raw-map
+              ("M-p" . ns-prev-frame)
+              ("M-n" . ns-next-frame)))
