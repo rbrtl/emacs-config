@@ -7,7 +7,10 @@
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char)
-  (setq ring-bell-function 'ignore))
+  (global-set-key (kbd "M-p") 'ns-prev-frame)
+  (global-set-key (kbd "M-n") 'ns-next-frame)
+  (setq ring-bell-function 'ignore)
+  (setq ns-right-alternate-modifier (quote none)))
 
 (if window-system
     (progn
@@ -41,6 +44,7 @@
 (defun set-trailing-whitespace ()
   (setq show-trailing-whitespace t))
 
+;; Package Installations
 
 (require 'package)
 
