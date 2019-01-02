@@ -44,6 +44,7 @@
 (defun set-trailing-whitespace ()
   (setq show-trailing-whitespace t))
 
+
 ;; Package Installations
 
 (require 'package)
@@ -56,10 +57,8 @@
              '("elpa" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;;(setq package-enable-at-startup nil)
+
 (package-initialize)
-;(package-read-all-archive-contents)
-;(package-refresh-contents)
 
 (add-to-list 'load-path (concat
                          (file-name-as-directory emacs-repository-path)
@@ -70,12 +69,6 @@
 (setq use-package-verbose t)
 ;; (setq use-package-debug t)
 
-;; (use-package dash
-;;   :ensure t)
-
-;; (use-package popup
-;;   :ensure t)
-
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -84,12 +77,6 @@
   (setq git-commit-fill-column 72) ; Longer than 72 characters in a line looks ugly on GitHub
   :bind (("C-c s" . magit-status)
          ("C-c l" . magit-log-all)))
-
-;; (use-package cl
-;;   :demand t)
-
-;; (use-package diminish
-;;   :ensure t)
 
 (use-package undo-tree
   :ensure t
@@ -209,24 +196,4 @@
   (company-flx-mode +1))
 
 
-;; TODO: ::CHALLENGE:: Find a way to integrate macOS spelling
-
-;; ;; find aspell and hunspell automatically
-;; (cond
-;;  ;; try hunspell at first
-;;  ;; if hunspell does NOT exist, use aspell
-;;  ((executable-find "hunspell")
-;;   (setq ispell-program-name "hunspell")
-;;   (setq ispell-local-dictionary "en_US")
-;;   (setq ispell-local-dictionary-alist
-;;         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-;;         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-;;         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
-
-;;  ((executable-find "aspell")
-;;   (setq ispell-program-name "aspell")
-;;   ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
-;;   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
-
-;; (global-set-key (kbd "C-;") 'ispell-word)
 
